@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.*;
 
 @Entity
+@Table(name="employee")
 public class Employee {
 	
 	// Set to auto since ID is set to AUTO_INCREMENT IN DATABASE
