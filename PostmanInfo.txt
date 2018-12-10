@@ -1,0 +1,51 @@
+POSTMAN
+=================
+
+
+
+Get  
+=============================
+Gets the webpage
+
+Post 
+=============================
+Go to Body -> Raw -> JSON -> enter JSON object to insert into database 
+
+{
+	"firstName":"Michael", 
+	"lastName":"Ramirez"
+}
+
+Put 
+==============================
+updates the entire object and reflects it in the database -- make sure you're passing in JSON and not Text
+{
+	"firstName":"MichaelAltered", 
+	"lastName":"RamirezAltered"
+}
+
+Patch 
+==============================
+instead of updated the entire object like Put does, Patch can update a single field in the object. Ex.
+
+Say we POST
+{
+	"firstName":"Test", 
+	"lastName":"Field"
+}
+
+We can the use Patch
+{
+	"firstName":"Update"
+}
+
+This updates the firstName from "Test" -> "Update"
+
+
+Delete
+=============================
+localhost:8080/employees/2
+
+Deletes employee "2" from the database
+
+If you run a Get on employee 2 it will return 404 not found
