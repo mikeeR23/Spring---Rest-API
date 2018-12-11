@@ -16,6 +16,7 @@ public class Participant extends AbstractEntity {
 	@Column(nullable = false)
 	private String email;
 	private Boolean checkedIn;
+	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(referencedColumnName = "ID", nullable = false, updatable = false)
 	private Event event;

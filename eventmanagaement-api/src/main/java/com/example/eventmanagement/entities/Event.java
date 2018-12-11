@@ -1,9 +1,9 @@
 package com.example.eventmanagement.entities;
 
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
+//import java.time.ZoneId;
 import java.util.Objects;
 import java.util.Set;
+
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -11,31 +11,30 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import org.springframework.data.rest.core.annotation.RestResource;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-
 @Entity
+@Table(name="event")
 public class Event extends AbstractEntity {
-
 	private String name;
 	private String description;
-	private ZonedDateTime startTime;
-	private ZonedDateTime endTime;
-	private ZoneId zoneId;
-	private Boolean started;
+	//private String startTime;
+	//private String endTime;
+	//private ZoneId zoneId;
+	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(nullable = false)
 	private Organizer organizer;
-	@JsonIgnore
+	
 	@OneToMany(mappedBy = "event", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
 	private Set<Participant> participants;
+	
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@RestResource(exported = false)
 	private Venue venue;
-
+	
 	public String getName() {
 		return name;
 	}
@@ -52,22 +51,7 @@ public class Event extends AbstractEntity {
 		this.description = description;
 	}
 
-	public ZonedDateTime getStartTime() {
-		return startTime;
-	}
-
-	public void setStartTime(ZonedDateTime startTime) {
-		this.startTime = startTime;
-	}
-
-	public ZonedDateTime getEndTime() {
-		return endTime;
-	}
-
-	public void setEndTime(ZonedDateTime endTime) {
-		this.endTime = endTime;
-	}
-
+/*
 	public ZoneId getZoneId() {
 		return zoneId;
 	}
@@ -75,14 +59,7 @@ public class Event extends AbstractEntity {
 	public void setZoneId(ZoneId zoneId) {
 		this.zoneId = zoneId;
 	}
-
-	public Boolean getStarted() {
-		return started;
-	}
-
-	public void setStarted(Boolean started) {
-		this.started = started;
-	}
+*/
 
 	public Organizer getOrganizer() {
 		return organizer;
@@ -111,7 +88,24 @@ public class Event extends AbstractEntity {
 	public Long getResourceId() {
 		return this.id;
 	}
+/*
+	public String getStartTime() {
+		return startTime;
+	}
 
+	public void setStartTime(String startTime) {
+		this.startTime = startTime;
+	}
+
+	public String getEndTime() {
+		return endTime;
+	}
+
+	public void setEndTime(String endTime) {
+		this.endTime = endTime;
+	}
+*/
+	
 	@Override
 	public boolean equals(Object obj) {
 		return Objects.equals(id, ((Event) obj).id);
