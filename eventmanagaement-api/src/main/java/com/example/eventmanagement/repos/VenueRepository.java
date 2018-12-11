@@ -1,8 +1,8 @@
-package com.example.eventManagement.repos;
+package com.example.eventmanagement.repos;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.example.eventManagement.entities.Venue;
+import com.example.eventmanagement.entities.Venue;
 
 public interface VenueRepository extends CrudRepository<Venue, Long> {
 
