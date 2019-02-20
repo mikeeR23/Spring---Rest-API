@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="person" class="com.ramirez.spring.test.testprog.Person">
+		<constructor-arg name="id" type="int" value="666"></constructor-arg> <!-- Arguments to be passed in constructor -->
+		<constructor-arg name="name" type="String"
+			value="Mike"></constructor-arg>
+		<property name="taxId">
+			<value>123</value> <!-- Just an alternative way of writing the xml -->
+		</property>
+	</bean>
+
+</beans>
